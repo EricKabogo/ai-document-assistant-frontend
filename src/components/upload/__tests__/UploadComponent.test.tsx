@@ -25,6 +25,7 @@ describe('UploadComponent', () => {
       preview: null,
       handleDrop: jest.fn(),
       clearPreview: jest.fn(),
+      loadingMessage: '',
     });
     
     (useDocumentStore as unknown as jest.Mock).mockReturnValue({
@@ -44,7 +45,10 @@ describe('UploadComponent', () => {
     render(<UploadComponent />);
     
     expect(screen.getByText(/Drag & drop your document here/i)).toBeInTheDocument();
-    expect(screen.getByText(/Supported formats: .txt, .docx, .pdf/i)).toBeInTheDocument();
+    // Look for file format badges instead of the text string
+    expect(screen.getByText(/TXT/i)).toBeInTheDocument();
+    expect(screen.getByText(/DOCX/i)).toBeInTheDocument();
+    expect(screen.getByText(/PDF/i)).toBeInTheDocument();
   });
 
   it('shows an error message when present', () => {

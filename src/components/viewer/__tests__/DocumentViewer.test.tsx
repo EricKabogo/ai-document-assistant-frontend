@@ -1,12 +1,14 @@
-// src/components/viewer/__tests__/DocumentViewer.test.tsx
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { DocumentViewer } from '../DocumentViewer';
-import { useDocumentStore } from '@/store/useStore';
+import { useDocumentStore, useOriginalDocument, useImprovedDocument } from '@/store/useStore';
 
+// Mock the entire store module
 jest.mock('@/store/useStore', () => ({
-  useDocumentStore: jest.fn()
+  useDocumentStore: jest.fn(),
+  useOriginalDocument: jest.fn(),
+  useImprovedDocument: jest.fn(),
 }));
 
 describe('DocumentViewer', () => {
@@ -29,9 +31,14 @@ describe('DocumentViewer', () => {
   };
 
   beforeEach(() => {
+    // Mock the selector functions
+    (useOriginalDocument as unknown as jest.Mock).mockReturnValue(mockOriginalDocument);
+    (useImprovedDocument as unknown as jest.Mock).mockReturnValue(mockImprovedDocument);
+    
+    // Mock the main store hook
     (useDocumentStore as unknown as jest.Mock).mockReturnValue({
-      originalDocument: mockOriginalDocument,
-      improvedDocument: mockImprovedDocument
+      showDiff: false,
+      setShowDiff: jest.fn()
     });
   });
 
@@ -45,25 +52,26 @@ describe('DocumentViewer', () => {
   });
 
   it('toggles diff view when the switch is clicked', () => {
+    const mockSetShowDiff = jest.fn();
+    (useDocumentStore as unknown as jest.Mock).mockReturnValue({
+      showDiff: false,
+      setShowDiff: mockSetShowDiff
+    });
+    
     render(<DocumentViewer />);
     
-    // Initially, diff view is off
-    expect(screen.getByText('This is the improved content.')).toBeInTheDocument();
+    // Find and click the toggle
+    const toggle = screen.getByRole('checkbox');
+    fireEvent.click(toggle);
     
-    // Toggle diff view
-    fireEvent.click(screen.getByRole('checkbox'));
-    
-    // Now the TextDiff component should be rendered
-    // This would require more complex testing for the actual diff component
-    // For this test, we'll just check that the text is still present
-    expect(screen.getByText('This is the improved content.')).toBeInTheDocument();
+    // Verify that setShowDiff was called correctly
+    expect(mockSetShowDiff).toHaveBeenCalledWith(true);
   });
 
   it('returns null when documents are not available', () => {
-    (useDocumentStore as unknown as jest.Mock).mockReturnValue({
-      originalDocument: null,
-      improvedDocument: null
-    });
+    // Mock missing documents
+    (useOriginalDocument as unknown as jest.Mock).mockReturnValue(null);
+    (useImprovedDocument as unknown as jest.Mock).mockReturnValue(null);
     
     const { container } = render(<DocumentViewer />);
     expect(container).toBeEmptyDOMElement();
