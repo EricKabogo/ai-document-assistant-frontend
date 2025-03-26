@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Document Assistant
+
+A modern web application for document improvement with AI-powered suggestions.
+
+## Features
+
+- **Upload Component**: Upload documents in .txt, .docx, and .pdf formats
+- **Document Viewer**: View original and improved documents side by side
+- **Suggestion Interface**: Review, accept, or reject AI-powered suggestions
+- **State Management**: Fully responsive state management using Zustand
+
+## Tech Stack
+
+- **Next.js**: React framework for production
+- **TypeScript**: Type-safe JavaScript
+- **Tailwind CSS**: Utility-first CSS framework
+- **Zustand**: Lightweight state management
+- **React Dropzone**: File uploads
+- **Diff**: Text comparison
+- **Mammoth**: DOCX parsing
+- **PDF.js**: PDF parsing
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js 16+ and npm
+
+### Installation
+
+1. Clone the repository:
+``` bash
+   git clone https://github.com/EricKabogo/ai-document-assistant-frontend.git
+   cd ai-document-assistant
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+``` bash
+    npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+``` bash
+    npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open http://localhost:3000 with your browser to see the result.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
+```bash
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+├── public/                 # Static assets
+├── src/
+│   ├── app/                # Next.js app directory
+│   ├── components/         # React components
+│   │   ├── suggestions/    # Suggestion-related components
+│   │   ├── ui/             # UI components
+│   │   ├── upload/         # Upload-related components
+│   │   └── viewer/         # Document viewer components
+│   ├── hooks/              # Custom React hooks
+│   ├── store/              # Zustand store
+│   ├── types/              # TypeScript types
+│   └── utils/              # Utility functions
+├── tests/                  # Test files
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+##User Guide
+###Uploading a Document
 
-## Deploy on Vercel
+1. Drag and drop a document onto the upload area or click to browse files
+2. Supported formats: .txt, .docx, .pdf
+3. The document will be processed and displayed in the viewer
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+###Reviewing Suggestions
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Each suggestion shows the original text and the improved version
+2. Click the check mark to accept a suggestion or the X to reject it
+3. Use the filter dropdown to view all, pending, applied, or ignored suggestions
+4. Click "Update Document with Applied Suggestions" to apply changes
+
+###Document Comparison
+
+1. Use the "Show differences" toggle to highlight changes between the original and improved document
+2. Download either the original or improved document using the toolbar buttons
+
+##Testing
+Run the test suite:
+```bash
+npm run test
+```
