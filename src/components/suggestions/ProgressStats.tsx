@@ -1,4 +1,3 @@
-// src/components/suggestions/ProgressStats.tsx
 import React from 'react';
 import { useSuggestions } from '@/store/useStore';
 

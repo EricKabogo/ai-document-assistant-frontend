@@ -1,4 +1,3 @@
-// src/components/ui/ErrorAlert.tsx
 import React from 'react';
 import { XCircleIcon } from '@heroicons/react/24/solid';
 

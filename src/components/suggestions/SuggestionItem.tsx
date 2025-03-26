@@ -1,4 +1,3 @@
-// src/components/suggestions/SuggestionItem.tsx
 import React from 'react';
 import { Suggestion } from '@/types';
 import { CheckIcon, XMarkIcon } from '@heroicons/react/24/outline';

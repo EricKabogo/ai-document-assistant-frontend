@@ -1,4 +1,3 @@
-// src/utils/documentParser.ts
 import mammoth from 'mammoth';
 import pdfToText from 'react-pdftotext';
 

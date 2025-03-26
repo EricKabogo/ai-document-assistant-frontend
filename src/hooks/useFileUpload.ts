@@ -1,4 +1,3 @@
-// src/hooks/useFileUpload.ts
 import { useState, useCallback } from 'react';
 import { useDocumentStore } from '@/store/useStore';
 import { createDocumentFromFile, getFileFormat, isValidFileType } from '@/utils/fileUtils';

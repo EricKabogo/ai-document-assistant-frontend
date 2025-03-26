@@ -1,4 +1,3 @@
-// src/components/upload/FilePreview.tsx
 import React from 'react';
 import { Document } from '@/types';
 import { DocumentTextIcon, DocumentIcon, DocumentArrowDownIcon } from '@heroicons/react/24/outline';

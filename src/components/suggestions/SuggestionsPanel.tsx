@@ -1,4 +1,3 @@
-// src/components/suggestions/SuggestionsPanel.tsx
 import React from 'react';
 import { useDocumentStore, useSuggestions } from '@/store/useStore';
 import { SuggestionsList } from './SuggestionsList';

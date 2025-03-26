@@ -1,4 +1,3 @@
-// src/components/viewer/DocumentViewer.tsx
 import React from 'react';
 import { useDocumentStore, useOriginalDocument, useImprovedDocument } from '@/store/useStore';
 import { TextDiff } from './TextDiff';

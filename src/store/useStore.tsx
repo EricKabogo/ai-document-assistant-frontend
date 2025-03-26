@@ -1,4 +1,3 @@
-// src/store/useStore.ts
 import { create } from 'zustand';
 import { Document, Suggestion, UploadStatus } from '@/types';
 import { generateUniqueId } from '@/utils/fileUtils';

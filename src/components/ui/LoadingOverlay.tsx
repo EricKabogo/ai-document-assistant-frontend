@@ -1,4 +1,3 @@
-// src/components/ui/LoadingOverlay.tsx
 import React from 'react';
 
 interface LoadingOverlayProps {

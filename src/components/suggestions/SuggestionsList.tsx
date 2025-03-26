@@ -1,4 +1,3 @@
-// src/components/suggestions/SuggestionsList.tsx
 import React, { useState } from 'react';
 import { useDocumentStore } from '@/store/useStore';
 import { SuggestionItem } from './SuggestionItem';

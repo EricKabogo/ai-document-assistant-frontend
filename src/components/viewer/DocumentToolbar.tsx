@@ -1,4 +1,3 @@
-// src/components/viewer/DocumentToolbar.tsx
 import React from 'react';
 import { DocumentTextIcon, ArrowDownTrayIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
 import { useDocumentStore } from '@/store/useStore';

@@ -1,4 +1,3 @@
-// src/utils/mockData.ts (update the existing file)
 import { Document, Suggestion } from '@/types';
 import { generateUniqueId } from './fileUtils';
 

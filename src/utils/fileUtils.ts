@@ -1,4 +1,3 @@
-// src/utils/fileUtils.ts
 import { Document } from '@/types';
 import { parseDocumentContent } from './documentParser';
 

@@ -1,4 +1,3 @@
-// src/components/upload/UploadComponent.tsx
 import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { useDocumentStore } from '@/store/useStore';

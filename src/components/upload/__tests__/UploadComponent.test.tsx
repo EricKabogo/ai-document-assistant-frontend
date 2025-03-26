@@ -1,4 +1,3 @@
-// src/components/upload/__tests__/UploadComponent.test.tsx
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';

@@ -1,4 +1,3 @@
-// src/components/viewer/TextDiff.tsx
 import React from 'react';
 import { diffWords } from 'diff';
 
