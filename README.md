@@ -65,26 +65,27 @@ A modern web application for document improvement with AI-powered suggestions.
 ├── tests/                  # Test files
 ```
 
-##User Guide
-###Uploading a Document
+## User Guide
+
+### Uploading a Document
 
 1. Drag and drop a document onto the upload area or click to browse files
 2. Supported formats: .txt, .docx, .pdf
 3. The document will be processed and displayed in the viewer
 
-###Reviewing Suggestions
+### Reviewing Suggestions
 
 1. Each suggestion shows the original text and the improved version
 2. Click the check mark to accept a suggestion or the X to reject it
 3. Use the filter dropdown to view all, pending, applied, or ignored suggestions
 4. Click "Update Document with Applied Suggestions" to apply changes
 
-###Document Comparison
+### Document Comparison
 
 1. Use the "Show differences" toggle to highlight changes between the original and improved document
 2. Download either the original or improved document using the toolbar buttons
 
-##Testing
+## Testing
 Run the test suite:
 ```bash
 npm run test
