@@ -3,11 +3,11 @@ import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { useDocumentStore } from '@/store/useStore';
 import { useFileUpload } from '@/hooks/useFileUpload';
-import { DocumentArrowUpIcon, XMarkIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
+import { DocumentArrowUpIcon, XMarkIcon, DocumentTextIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline';
 
 export function UploadComponent() {
   const { uploadStatus, errorMessage, reset } = useDocumentStore();
-  const { preview, handleDrop, clearPreview } = useFileUpload();
+  const { preview, handleDrop, clearPreview, loadingMessage } = useFileUpload();
 
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
@@ -62,8 +62,13 @@ export function UploadComponent() {
           </div>
 
           {errorMessage && (
-            <div className="mt-4 p-3 bg-red-50 text-red-700 rounded-md text-sm">
-              {errorMessage}
+            <div className="mt-4 p-3 bg-red-50 rounded-md">
+              <div className="flex">
+                <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
+                <div className="ml-3">
+                  <p className="text-sm text-red-700">{errorMessage}</p>
+                </div>
+              </div>
             </div>
           )}
         </div>
@@ -90,7 +95,7 @@ export function UploadComponent() {
               </p>
               <p className="text-xs text-gray-500">
                 {uploadStatus === 'uploading'
-                  ? 'Analyzing document content...'
+                  ? loadingMessage || 'Analyzing document content...'
                   : 'Document analyzed successfully'}
               </p>
             </div>
@@ -98,7 +103,7 @@ export function UploadComponent() {
               {uploadStatus === 'uploading' ? (
                 <div className="flex items-center">
                   <div className="h-5 w-5 border-2 border-blue-500 border-t-transparent rounded-full animate-spin mr-2"></div>
-                  <span className="text-xs text-blue-500">Processing document...</span>
+                  <span className="text-xs text-blue-500">Processing...</span>
                 </div>
               ) : (
                 <div className="h-5 w-5 bg-green-500 rounded-full flex items-center justify-center">

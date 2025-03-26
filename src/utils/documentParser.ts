@@ -1,9 +1,6 @@
 // src/utils/documentParser.ts
 import mammoth from 'mammoth';
-import * as pdfjs from 'pdfjs-dist';
-
-// Initialize PDF.js worker (needed for PDF parsing)
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+import pdfToText from 'react-pdftotext';
 
 export async function parseDocumentContent(file: File): Promise<string> {
   const fileType = file.type;
@@ -76,39 +73,23 @@ async function parseDocxFile(file: File): Promise<string> {
   });
 }
 
-// Parse .pdf files
+// Parse .pdf files using only react-pdftotext
 async function parsePdfFile(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
+  try {
+    console.log('Parsing PDF file with react-pdftotext:', file.name);
     
-    reader.onload = async (event) => {
-      try {
-        const arrayBuffer = event.target?.result as ArrayBuffer;
-        const pdf = await pdfjs.getDocument(arrayBuffer).promise;
-        
-        let fullText = '';
-        
-        // Extract text from each page
-        for (let i = 1; i <= pdf.numPages; i++) {
-          const page = await pdf.getPage(i);
-          const textContent = await page.getTextContent();
-          const pageText = textContent.items
-            .map((item: any) => item.str)
-            .join(' ');
-          
-          fullText += pageText + '\n\n';
-        }
-        
-        resolve(fullText);
-      } catch (error) {
-        reject(new Error('Failed to parse PDF file'));
-      }
-    };
+    // Use react-pdftotext as shown in the Stack Overflow example
+    const text = await pdfToText(file);
     
-    reader.onerror = () => {
-      reject(new Error('Error reading PDF file'));
-    };
+    // Check if we got any text
+    if (!text || text.trim() === '') {
+      return '[This PDF appears to contain scanned images rather than text. OCR processing would be required to extract text content.]';
+    }
     
-    reader.readAsArrayBuffer(file);
-  });
+    console.log('PDF parsing completed successfully with react-pdftotext');
+    return text;
+  } catch (error) {
+    console.error('PDF processing error with react-pdftotext:', error);
+    throw new Error('Failed to parse PDF file. The file may be corrupted or in an unsupported format.');
+  }
 }
