@@ -18,7 +18,7 @@ A modern web application for document improvement with AI-powered suggestions.
 - **React Dropzone**: File uploads
 - **Diff**: Text comparison
 - **Mammoth**: DOCX parsing
-- **PDF.js**: PDF parsing
+- **pdfToText**: PDF parsing
 
 ## Getting Started
 
