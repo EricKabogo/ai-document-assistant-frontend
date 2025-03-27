@@ -42,7 +42,7 @@ export function DocumentViewer() {
             </div>
           </div>
           <div className="p-4 bg-white h-96 overflow-y-auto">
-            <pre className="whitespace-pre-wrap">{originalDocument.content}</pre>
+            <pre className="whitespace-pre-wrap text-gray-500">{originalDocument.content}</pre>
           </div>
         </div>
 
@@ -59,7 +59,7 @@ export function DocumentViewer() {
                 improved={improvedDocument.content}
               />
             ) : (
-              <pre className="whitespace-pre-wrap">{improvedDocument.content}</pre>
+              <pre className="whitespace-pre-wrap text-gray-700">{improvedDocument.content}</pre>
             )}
           </div>
         </div>
