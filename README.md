@@ -31,7 +31,7 @@ A modern web application for document improvement with AI-powered suggestions.
 1. Clone the repository:
 ``` bash
    git clone https://github.com/EricKabogo/ai-document-assistant-frontend.git
-   cd ai-document-assistant
+   cd ai-document-assistant-frontend
 ```
 
 2. Install dependencies:
