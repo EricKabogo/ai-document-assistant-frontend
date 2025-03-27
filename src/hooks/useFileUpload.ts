@@ -5,13 +5,7 @@ import { generateMockSuggestions } from '@/utils/mockData';
 
 export function useFileUpload() {
   const [preview, setPreview] = useState<string | null>(null);
-  const { 
-    setOriginalDocument, 
-    setImprovedDocument,
-    setSuggestions, 
-    setUploadStatus, 
-    setErrorMessage 
-  } = useDocumentStore();
+  const { setOriginalDocument, setImprovedDocument,setSuggestions, setUploadStatus, setErrorMessage } = useDocumentStore();
   const [loadingMessage, setLoadingMessage] = useState<string>('');
 
   const handleDrop = useCallback(async (acceptedFiles: File[]) => {
@@ -28,7 +22,7 @@ export function useFileUpload() {
       return;
     }
     
-    // Validate file size (e.g., 20MB limit)
+    // Validate file size
     const MAX_FILE_SIZE = 20 * 1024 * 1024; // 20MB in bytes
     if (file.size > MAX_FILE_SIZE) {
       setErrorMessage(`File is too large. Maximum file size is 20MB.`);

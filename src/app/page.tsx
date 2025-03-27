@@ -48,7 +48,7 @@ export default function Home() {
         </div>
         
         <footer className="mt-8 text-center text-sm text-gray-500">
-          <p>AI Document Assistant &copy; {new Date().getFullYear()}</p>
+          <p>Rescript &copy; {new Date().getFullYear()}</p>
         </footer>
       </div>
     </main>
